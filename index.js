@@ -19,6 +19,8 @@ app.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
+//Section for creating shorturl
+//First validates the url, checks db for existing url and if everything checks out, it creates and saves short url with original url as a JSON object
 app.post('/api/shorturl', async (req, res) => {
   try {
     const urlValidator = validator.isURL(req.body.url)
@@ -43,13 +45,12 @@ app.post('/api/shorturl', async (req, res) => {
   }
 })
 
-
+//Section for redirecting
+//Checks db first for existing url
 app.get('/api/shorturl/:short', async (req, res, next) => {
   try {
     const foundUrl = await Url.findOne({short_url: req.params.short})
-    
-    
-    console.log(foundUrl)
+
     res.redirect(foundUrl.original_url)
   } catch (e) {
     res.status(400).send(`${e}`)
