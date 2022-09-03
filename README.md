@@ -1,3 +1,16 @@
 # URL Shortener Microservice
 
-This is the boilerplate code for the URL Shortener Microservice project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice.
+This is the URL Shortener Microservice project for 3rd freecodecamp back-end challanges. Feel free to use.
+
+Dependencies:
+
+body-parser,
+cors,
+dotenv,
+express,
+mongoose,
+shortid,
+validator
+
+
+Check out deployed app: https://mekik-url-shortener.herokuapp.com/
