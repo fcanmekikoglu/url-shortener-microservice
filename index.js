@@ -50,7 +50,9 @@ app.post('/api/shorturl', async (req, res) => {
 app.get('/api/shorturl/:short', async (req, res, next) => {
   try {
     const foundUrl = await Url.findOne({short_url: req.params.short})
-
+    if(!foundUrl){
+      throw new Error ('Url doesnt exist')
+    }
     res.redirect(foundUrl.original_url)
   } catch (e) {
     res.status(400).send(`${e}`)
